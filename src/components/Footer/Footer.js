@@ -40,12 +40,6 @@ const Footer = () => (
           </ul>
         </Col>
         <Col lg={{ span: 3, offset: 3 }}>
-          <div className={classes.subtitle}>
-            Made with{' '}
-            <span role="img" aria-label="love">
-              ❤️
-            </span>
-          </div>
           <ul className={classes.linkList}>
             <li>
               © {new Date().getFullYear()}

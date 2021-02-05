@@ -61,7 +61,7 @@ const Post = ({ data, pageContext }) => {
             <Container fluid className={classes.post}>
               <Row>
                 <Col
-                         >
+                >
                   <div className={classes.metadata}>
                     <h2 className={classes.postTitle}>
                       {post.frontmatter.title}
@@ -69,7 +69,6 @@ const Post = ({ data, pageContext }) => {
                     <AuthorDisplay
                       name={author}
                       date={date}
-                      readTimeInMinutes={post.timeToRead}
                     />
                   </div>
                   <MDXRenderer>{post.body}</MDXRenderer>
