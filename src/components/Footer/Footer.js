@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
-import classes from './Footer.module.css';
+import * as classes from './Footer.module.css';
 
 import { GitHubIcon, TwitterIcon, RssIcon } from '../icons';
 

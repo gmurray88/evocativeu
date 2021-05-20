@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 
 import { Footer, Header } from '../';
-import classes from './Layout.module.css';
+import * as classes from './Layout.module.css';
 
 const Layout = ({ children }) => {
   return (

@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
 import { Image, Layout } from '../../components';
-import classes from './CommunityPage.module.css';
+import * as classes from './CommunityPage.module.css';
 
 const CommunityPage = () => (
   <Layout>

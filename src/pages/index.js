@@ -8,7 +8,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { Image, Layout, SEO } from '../components';
 
 
-import classes from './Home.module.css';
+import * as classes from './Home.module.css'
 
 class IndexPage extends React.Component {
   render() {

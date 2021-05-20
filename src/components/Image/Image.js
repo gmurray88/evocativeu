@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-import classes from './Image.module.css';
+import * as classes from './Image.module.css';
 
 const Image = ({ src, ...rest }) => {
 

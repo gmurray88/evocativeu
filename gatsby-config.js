@@ -42,20 +42,7 @@ module.exports = {
               disableBgImageOnAlpha: true,
             },
           },
-          // code formatting in mdx files
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: 'language-',
-              inlineCodeMarker: null,
-              aliases: {},
-              showLineNumbers: false,
-              noInlineHighlight: false,
-              maxWidth: 500,
-              linkImagesToOriginal: false,
-            },
-          },
-        ],
+                 ],
       },
     },
     {

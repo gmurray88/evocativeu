@@ -3,7 +3,7 @@ import React from 'react';
 import ReactTextCollapse from 'react-text-collapse';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import classes from './TextCollapse.module.css';
+import * as classes from './TextCollapse.module.css';
 
 const TextCollapse = ({ src }) => {
 
