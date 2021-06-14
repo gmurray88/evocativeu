@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const slugify = require('./src/utils/slugify');
 
 module.exports = {
@@ -8,6 +10,18 @@ module.exports = {
     siteUrl: `https://evocativeu.com`,
   },
   plugins: [
+    {
+      resolve: `@robinmetral/gatsby-source-s3`,
+      options: {
+        aws: {
+          accessKeyId: 'AKIASVXZG7JYOWKCVONY',
+          secretAccessKey: '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',
+          region: 'us-west-1',
+        },
+        buckets: ["slideshows", "evocativeu-posts"],
+        expiration: 120,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -155,6 +169,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-sharp-exif',
+    'gatsby-plugin-image',
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

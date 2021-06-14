@@ -3,9 +3,8 @@ import { graphql } from 'gatsby';
 
 // boostrap stuff
 import { Col, Container, Row } from 'react-bootstrap';
-
-
-import { Image, Layout, SEO } from '../components';
+import { StaticImage } from "gatsby-plugin-image"
+import { Layout, SEO } from '../components';
 
 
 import * as classes from './Home.module.css'
@@ -18,7 +17,11 @@ class IndexPage extends React.Component {
         <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
 
         <Container fluid className={classes.about}>
+        <Row>
+            <Col>
 
+            </Col>
+          </Row>
           <Row>
             <Col >
               <h2>ee-vok'-uh-tiv</h2>
@@ -30,10 +33,11 @@ class IndexPage extends React.Component {
             </p>
             </Col>
           </Row>
+
           <Row>
             <Col>
 
-              <Image src="SohoNeon.jpg" alt="Soho Neon" />
+              <StaticImage src="../images/SohoNeon.jpg" alt="Soho Neon" />
             </Col>
           </Row>
 
