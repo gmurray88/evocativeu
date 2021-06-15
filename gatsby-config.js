@@ -104,70 +104,7 @@ module.exports = {
         cookieDomain: 'evocativeu.com',
       },
     },
-    {
-      resolve: `gatsby-plugin-feed`,
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allMdx } }) => {
-              const posts = allMdx.nodes.sort((a, b) => {
-                return (
-                  new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
-                );
-              });
-
-              return posts.map(post => {
-                return Object.assign({}, post.frontmatter, {
-                  description: post.frontmatter.subtitle,
-                  date: post.frontmatter.date,
-                  url: `${site.siteMetadata.siteUrl}/blog/${slugify(
-                    post.frontmatter.title
-                  )}`,
-                  guid: `${site.siteMetadata.siteUrl}/blog/${slugify(
-                    post.frontmatter.title
-                  )}`,
-                });
-              });
-            },
-            query: `
-              {
-                allMdx(filter: {frontmatter: {type: {eq: "blog"}}}) {
-                  nodes {
-                    id
-                    frontmatter {
-                      title
-                      subtitle
-                      author
-                      date
-                      coverImage
-                    }
-                  }
-                }
-              }
-            `,
-            output: '/rss.xml',
-            title: "EvocativeU",
-            // optional configuration to insert feed reference in pages:
-            // if `string` is used, it will be used to create RegExp and then test if pathname of
-            // current page satisfied this regular expression;
-            // if not provided or `undefined`, all pages will have feed reference inserted
-            match: '^/blog/',
-          },
-        ],
-      },
-    },
+  
     'gatsby-plugin-sharp-exif',
     'gatsby-plugin-image',
     // this (optional) plugin enables Progressive Web App + Offline functionality

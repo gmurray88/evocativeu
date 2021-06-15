@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import * as classes from './Image.module.css';
 
-const ImageS3 = ({ src, ...rest }) => {
+const ImageS3 = ({ src }) => {
   const { allS3Object } = useStaticQuery(
     graphql`
     query { 

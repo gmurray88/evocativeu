@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 import { Col, Row } from 'react-bootstrap';
 
 import slugify from '../../utils/slugify';
-import { CoverImage } from '../Image';
+import { CoverImageS3 } from '../Image';
 import { AuthorDisplay } from '../AuthorDisplay';
 
 import * as classes from './BlogPostItem.module.css';
@@ -17,9 +17,10 @@ const BlogPostItem = ({ post, feature = false }) => {
       <Link to={`/blog/${slugify(title)}`} className={classes.container}>
         <Row>
           <Col xs={12} sm={12} md={12} lg={feature ? 8 : 12}>
-            <CoverImage
+          
+            <CoverImageS3
               src={coverImage}
-              className={
+              dName={
                 feature ? classes.featureImageContainer : classes.imageContainer
               }
             />
@@ -43,3 +44,4 @@ BlogPostItem.propTypes = {
 };
 
 export default BlogPostItem;
+

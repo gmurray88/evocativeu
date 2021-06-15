@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Location } from '@reach/router';
-
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { Container, Col, Row } from 'react-bootstrap';
-
+import { HeroImage } from '../../components/Image';
 import {
   AuthorDisplay,
   Colophon,
-  CoverImage,
   Layout,
   SEO,
 } from '../../components';
@@ -36,28 +34,19 @@ const Post = ({ data, pageContext }) => {
 
         return (
           <Layout>
-            <SEO
-              title={title}
-              description={subtitle}
-              ogType="article"
-              imageUrl={
-                coverImageUrl
-                  ? `${siteURLBase}${coverImageUrl.fixed.src}`
-                  : null
-              }
-            />
-            {coverImage && (
+           
+ 
               <Container fluid className={classes.coverImageContainer}>
                 <Row noGutters>
                   <Col>
-                    <CoverImage
+                    <HeroImage
                       src={coverImage}
-                      className={classes.coverImage}
+                      dName={classes.coverImage}
                     />
                   </Col>
                 </Row>
               </Container>
-            )}
+ 
             <Container fluid className={classes.post}>
               <Row>
                 <Col
@@ -93,7 +82,7 @@ Post.propTypes = {
 };
 
 export const query = graphql`
-  query($id: String!, $coverImage: String) {
+  query($id: String!) {
     post: mdx(id: { eq: $id }) {
       id
       body
@@ -106,12 +95,8 @@ export const query = graphql`
         coverImage
       }
     }
-    coverImageUrl: imageSharp(fixed: { originalName: { eq: $coverImage } }) {
-      fixed(width: 1200) {
-        src
-      }
-    }
-  }
+
+     }
 `;
 
 export default Post;
