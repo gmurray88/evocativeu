@@ -4,7 +4,7 @@ import { Location } from '@reach/router';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { Container, Col, Row } from 'react-bootstrap';
-import { HeroImageLocal } from '../../components/Image';
+import { HeroImageS3 } from '../../components/Image';
 import {
   AuthorDisplay,
   Colophon,
@@ -39,7 +39,7 @@ const Post = ({ data, pageContext }) => {
               <Container fluid className={classes.coverImageContainer}>
                 <Row noGutters>
                   <Col>
-                    <HeroImageLocal
+                    <HeroImageS3
                       src={coverImage}
                       dName={classes.coverImage}
                     />
