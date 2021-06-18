@@ -1,4 +1,6 @@
-require("dotenv").config();
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 const slugify = require('./src/utils/slugify');
 
@@ -14,9 +16,9 @@ module.exports = {
       resolve: `@robinmetral/gatsby-source-s3`,
       options: {
         aws: {
-          accessKeyId: 'AKIASVXZG7JYOWKCVONY',
-          secretAccessKey: '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',
-          region: 'us-west-1',
+          accessKeyId: process.env.GATSBY_AWS_ACCESS_KEY_ID,
+          secretAccessKey: process.env.GATSBY_AWS_SECRET_ACCESS_KEY,
+          region: process.env.GATSBY_AWS_REGION,
         },
         buckets: ["slideshows", "evocativeu-posts"],
         expiration: 120,
