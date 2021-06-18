@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyImage } from "gatsby-plugin-image"
 
 
-export const CoverImageS3 = ({ src, dName }) => {
+export const HeroImageS3 = ({ src, dName }) => {
     const { allS3Object } = useStaticQuery(
         graphql`
         query { 
@@ -15,7 +15,7 @@ export const CoverImageS3 = ({ src, dName }) => {
               localFile {
                 childImageSharp {
                   gatsbyImageData (
-                    layout: CONSTRAINED
+                    layout: FULL_WIDTH
                 )
                 }
               }
@@ -40,9 +40,9 @@ export const CoverImageS3 = ({ src, dName }) => {
       )
 };
 
-CoverImageS3.propTypes = {
+HeroImageS3.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
 };
 
-export default CoverImageS3;
+export default HeroImageS3;

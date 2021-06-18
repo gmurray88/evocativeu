@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage} from "gatsby-plugin-image"
 
 import * as classes from './Image.module.css';
 
-const NewImage = ({ src, ...rest }) => {
+const ImageLocal = ({ src }) => {
   const { allFile } = useStaticQuery(
     graphql`
     query {
@@ -15,13 +15,13 @@ const NewImage = ({ src, ...rest }) => {
               edges {
                 node {
                   childImageSharp {
-                      fluid {
-                        originalName
-                      }
                       gatsbyImageData (
                         layout: CONSTRAINED
                     )
-                    
+                    fluid{
+                      originalName
+                    }
+           
                     }
                   }
                 }
@@ -39,16 +39,15 @@ const NewImage = ({ src, ...rest }) => {
 
   return (
     <div className={classes.container}>
-         <GatsbyImage image={feimage.node.childImageSharp.gatsbyImageData} alt=""  style={{ marginLeft: "auto", marginRight: "auto", maxHeight: "80vh", maxWidth: `calc(80vh * ((${feimage.node.childImageSharp.gatsbyImageData.width}) / (${feimage.node.childImageSharp.gatsbyImageData.height})))`  }}/>
-       
-    </div>
+           <GatsbyImage image={feimage.node.childImageSharp.gatsbyImageData} alt=""  style={{ marginLeft: "auto", marginRight: "auto", maxHeight: "80vh", maxWidth: `calc(80vh * ((${feimage.node.childImageSharp.gatsbyImageData.width}) / (${feimage.node.childImageSharp.gatsbyImageData.height})))`  }}/>
+     </div>
   )
 };
 
-NewImage.propTypes = {
+ImageLocal.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
 
 };
 
-export default NewImage;
+export default ImageLocal;

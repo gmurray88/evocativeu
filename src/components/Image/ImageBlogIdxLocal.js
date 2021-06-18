@@ -1,36 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image"
 
-export const CoverImage = ({ src, alt, ...rest }) => {
+export const ImageBlogIdxLocal = ({ src, dName }) => {
   const { allImageSharp } = useStaticQuery(graphql`
     query {
       allImageSharp {
         edges {
           node {
-           
-            fluid(maxWidth: 2048) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
+            gatsbyImageData (
+              layout: CONSTRAINED
+            )
+            fluid{
               originalName
             }
-          }
         }
       }
     }
+    }
   `);
-  const image = allImageSharp.edges.find(
+  const feimage = allImageSharp.edges.find(
     edge => edge.node.fluid.originalName === src
   );
-  if (!image) {
-    return null;
-  }
-  return <Img objectFit="cover" fluid={image.node.fluid} alt={alt} {...rest} />;
+  return (
+  <GatsbyImage image={feimage.node.gatsbyImageData} alt=""  className={dName} />
+  )
 };
 
-CoverImage.propTypes = {
+ImageBlogIdxLocal.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
 };
 
-export default CoverImage;
+export default ImageBlogIdxLocal;

@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql, useStaticQuery } from 'gatsby'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import '../../styles/carousel.css';
 
 
-const NewMiami2019SlideShow = () => {
+const Miami2019SlideShow = () => {
   const { allS3Object } = useStaticQuery(
     graphql`
     query {
@@ -59,5 +59,5 @@ const NewMiami2019SlideShow = () => {
     </div>
   )
 }
-export default NewMiami2019SlideShow;
+export default Miami2019SlideShow;
 

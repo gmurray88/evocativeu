@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyImage } from "gatsby-plugin-image"
 
 
-export const HeroImage = ({ src, dName }) => {
+export const ImageBlogIdxS3 = ({ src, dName }) => {
     const { allS3Object } = useStaticQuery(
         graphql`
         query { 
@@ -15,14 +15,15 @@ export const HeroImage = ({ src, dName }) => {
               localFile {
                 childImageSharp {
                   gatsbyImageData (
-                    layout: FULL_WIDTH
+                    layout: CONSTRAINED
                 )
                 }
               }
             }
           }
         }
-        }
+      }
+   
               `,
       );
 
@@ -40,9 +41,9 @@ export const HeroImage = ({ src, dName }) => {
       )
 };
 
-HeroImage.propTypes = {
+ImageBlogIdxS3.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
 };
 
-export default HeroImage;
+export default ImageBlogIdxS3;
