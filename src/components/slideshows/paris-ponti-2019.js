@@ -42,22 +42,22 @@ const ParisPonti2019SlideShow = () => {
   )
   return (
     <div >
-      <Carousel
-        showArrows={true}
-        showThumbs={false}
-      >
+    <Carousel
+      showArrows={true}
+      showThumbs={false}
+    >
 
-        {allS3Object.edges.map(({ node }) => (
-          <div >
-            <GatsbyImage image={node.localFile.childImageSharp.gatsbyImageData} alt={src} style={{ marginLeft: "auto", marginRight: "auto", maxHeight: "80vh", maxWidth: `calc(80vh * ((${node.localFile.childImageSharp.gatsbyImageData.width}) / (${node.localFile.childImageSharp.gatsbyImageData.height})))`  }}/>
-            <p>
-              {node.localFile.childImageSharp.fields.exif.raw.image.ImageDescription}
-            </p>
-          </div>
-        ))}
-      </Carousel>
-    </div>
-  )
+      {allS3Object.edges.map(({ node }) => (
+        <div >
+          <GatsbyImage image={node.localFile.childImageSharp.gatsbyImageData} alt={node.Key} style={{ marginLeft: "auto", marginRight: "auto", maxHeight: "80vh", maxWidth: `calc(80vh * ((${node.localFile.childImageSharp.gatsbyImageData.width}) / (${node.localFile.childImageSharp.gatsbyImageData.height})))`  }}/>
+          <p>
+            {node.localFile.childImageSharp.fields.exif.raw.image.ImageDescription}
+          </p>
+        </div>
+      ))}
+    </Carousel>
+  </div>
+)
 }
 export default ParisPonti2019SlideShow;
 
