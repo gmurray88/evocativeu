@@ -24,6 +24,7 @@ module.exports = {
         expiration: 120,
       },
     },
+ 
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

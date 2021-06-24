@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactTextCollapse from 'react-text-collapse';
 import { useStaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 
 import * as classes from './TextCollapse.module.css';
 
@@ -24,6 +25,9 @@ const TextCollapse = ({ src }) => {
       allImageSharp {
         edges {
           node {
+            original {
+              src
+            }
             fields {
               exif {
                 raw {
@@ -33,16 +37,13 @@ const TextCollapse = ({ src }) => {
                 }
               }
             }
-            fluid {
-               originalName
-            }
           }
         }
       }
     }
   `);
   const image = allImageSharp.edges.find(
-    edge => edge.node.fluid.originalName === src
+    edge => edge.node.original.src.includes(src)
   );
   const desc = image.node.fields.exif.raw.image.ImageDescription.toString();
   if (desc.length > 500) {
@@ -66,6 +67,10 @@ const TextCollapse = ({ src }) => {
 
   }
 
+};
+
+TextCollapse.propTypes = {
+  src: PropTypes.string,
 };
 
 export default TextCollapse;

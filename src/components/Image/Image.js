@@ -1,46 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import * as classes from './Image.module.css';
 
-const Image = ({ src, ...rest }) => {
-
-  const { allImageSharp } = useStaticQuery(graphql`
-    query {
-      allImageSharp {
-        edges {
-          node {
-            fluid(maxWidth: 2048) {
-              ...GatsbyImageSharpFluid_withWebp_noBase64
-              originalName
+const ImageS3 = ({ src }) => {
+  const { allS3Object } = useStaticQuery(
+    graphql`
+    query { 
+      allS3Object {
+     edges {
+        node {
+          Key
+          localFile {
+            childImageSharp {
+              gatsbyImageData (
+                placeholder: BLURRED
+            )
             }
           }
         }
       }
     }
-  `);
-  const image = allImageSharp.edges.find(
-    edge => edge.node.fluid.originalName === src
+    }
+          `,
   );
-  if (!image) {
+  const feimage = allS3Object.edges.find(
+    edge => edge.node.Key.includes(src)
+  );
+
+
+
+  if (!feimage) {
     return null;
   }
 
   return (
     <div className={classes.container}>
-      <Img style={{ marginLeft: "auto", marginRight: "auto", maxHeight: "80vh", maxWidth: `calc(80vh * ${image.node.fluid.aspectRatio})` }}
-        fluid={image.node.fluid} alt={src}  {...rest} />
-
+         <GatsbyImage image={feimage.node.localFile.childImageSharp.gatsbyImageData} alt={src}  style={{ marginLeft: "auto", marginRight: "auto", maxHeight: "80vh", maxWidth: `calc(80vh * ((${feimage.node.localFile.childImageSharp.gatsbyImageData.width}) / (${feimage.node.localFile.childImageSharp.gatsbyImageData.height})))`  }}/>
+       
     </div>
   )
 };
 
-Image.propTypes = {
+ImageS3.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
 
 };
 
-export default Image;
+export default ImageS3;
