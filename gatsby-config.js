@@ -12,19 +12,7 @@ module.exports = {
     siteUrl: `https://evocativeu.com`,
   },
   plugins: [
-    {
-      resolve: `@robinmetral/gatsby-source-s3`,
-      options: {
-        aws: {
-          accessKeyId: process.env.GATSBY_AWS_ACCESS_KEY_ID,
-          secretAccessKey: process.env.GATSBY_AWS_SECRET_ACCESS_KEY,
-          region: process.env.GATSBY_AWS_REGION,
-        },
-        buckets: ["slideshows", "evocativeu-posts"],
-        expiration: 120,
-      },
-    },
- 
+    
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

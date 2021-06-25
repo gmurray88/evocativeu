@@ -1,53 +1,48 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage} from "gatsby-plugin-image"
 
 import * as classes from './Image.module.css';
 
-const ImageS3 = ({ src }) => {
-  const { allS3Object } = useStaticQuery(
+const Image = ({ src }) => {
+  const { allImageSharp } = useStaticQuery(
     graphql`
-    query { 
-      allS3Object {
-     edges {
-        node {
-          Key
-          localFile {
-            childImageSharp {
-              gatsbyImageData (
-                placeholder: BLURRED
-            )
+    query {
+      allImageSharp {
+        edges {
+          node {
+            original {
+              src
             }
+            gatsbyImageData (
+              placeholder: BLURRED
+            )
+
           }
+         }
         }
       }
-    }
-    }
-          `,
-  );
-  const feimage = allS3Object.edges.find(
-    edge => edge.node.Key.includes(src)
+
+    `,
   );
 
 
-
-  if (!feimage) {
-    return null;
-  }
+  const feimage = allImageSharp.edges.find(
+    edge => edge.node.original.src.includes(src)
+  );
 
   return (
     <div className={classes.container}>
-         <GatsbyImage image={feimage.node.localFile.childImageSharp.gatsbyImageData} alt={src}  style={{ marginLeft: "auto", marginRight: "auto", maxHeight: "80vh", maxWidth: `calc(80vh * ((${feimage.node.localFile.childImageSharp.gatsbyImageData.width}) / (${feimage.node.localFile.childImageSharp.gatsbyImageData.height})))`  }}/>
-       
-    </div>
+           <GatsbyImage image={feimage.node.gatsbyImageData} alt={src}  style={{ marginLeft: "auto", marginRight: "auto", maxHeight: "80vh", maxWidth: `calc(80vh * ((${feimage.node.gatsbyImageData.width}) / (${feimage.node.gatsbyImageData.height})))`  }}/>
+     </div>
   )
 };
 
-ImageS3.propTypes = {
+Image.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
 
 };
 
-export default ImageS3;
+export default Image;

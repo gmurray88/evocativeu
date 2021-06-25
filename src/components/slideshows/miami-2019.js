@@ -7,21 +7,19 @@ import '../../styles/carousel.css';
 
 
 const Miami2019SlideShow = () => {
-  const { allS3Object } = useStaticQuery(
+  const { allFile } = useStaticQuery(
     graphql`
     query {
-      allS3Object(
-            filter: {Key: {glob: "miami-2019/*"}}
-            sort: {fields: Key, order: ASC}
+        allFile(
+            filter: {relativeDirectory: {eq: "slideshows/miami-2019"}}
+            sort: {fields: name, order: ASC}
             ) {
               edges {
                 node {
-                  Key
-                  localFile {
                   childImageSharp {
                     gatsbyImageData (
                       placeholder: BLURRED
-                   )
+                   ) 
                     fields {
                       exif {
                         raw {
@@ -31,27 +29,25 @@ const Miami2019SlideShow = () => {
                        }
                      }
                     }
-                  
-                    }
                   }
-                }
-              }
               }
             }
-          `,
+          }
+        }
+      `,
   )
   return (
-    <div >
+    <div>
       <Carousel
         showArrows={true}
         showThumbs={false}
       >
-
-        {allS3Object.edges.map(({ node }) => (
-          <div >
-            <GatsbyImage image={node.localFile.childImageSharp.gatsbyImageData} alt={node.Key} style={{ marginLeft: "auto", marginRight: "auto", maxHeight: "80vh", maxWidth: `calc(80vh * ((${node.localFile.childImageSharp.gatsbyImageData.width}) / (${node.localFile.childImageSharp.gatsbyImageData.height})))`  }}/>
-            <p>
-              {node.localFile.childImageSharp.fields.exif.raw.image.ImageDescription}
+        {allFile.edges.map(({ node }) => (
+    
+          <div>
+             <GatsbyImage image={node.childImageSharp.gatsbyImageData} alt=""   style={{ marginLeft: "auto", marginRight: "auto", maxHeight: "80vh", maxWidth: `calc(80vh * ((${node.childImageSharp.gatsbyImageData.width}) / (${node.childImageSharp.gatsbyImageData.height})))`  }}/>
+                 <p>
+              {node.childImageSharp.fields.exif.raw.image.ImageDescription}
             </p>
           </div>
         ))}
@@ -59,6 +55,5 @@ const Miami2019SlideShow = () => {
     </div>
   )
 }
-
 export default Miami2019SlideShow;
 

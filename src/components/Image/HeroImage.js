@@ -4,46 +4,41 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyImage } from "gatsby-plugin-image"
 
 
-export const HeroImageS3 = ({ src, dName }) => {
-    const { allS3Object } = useStaticQuery(
+export const HeroImage = ({ src, dName }) => {
+    const { allImageSharp } = useStaticQuery(
         graphql`
-        query { 
-          allS3Object {
-         edges {
-            node {
-              Key
-              localFile {
-                childImageSharp {
-                  gatsbyImageData (
-                    layout: FULL_WIDTH
-                    placeholder: BLURRED
-                )
+        query {
+          allImageSharp {
+            edges {
+              node {
+                original {
+                  src
                 }
+                gatsbyImageData (
+                  layout: FULL_WIDTH
+                  placeholder: BLURRED
+                )
               }
+             }
             }
           }
-        }
-        }
-              `,
+
+        `,
       );
 
-      const feimage = allS3Object.edges.find(
-        edge => edge.node.Key.includes(src)
+      const feimage = allImageSharp.edges.find(
+        edge => edge.node.original.src.includes(src)
       );
+        
+ 
+   return(
+      <GatsbyImage image={feimage.node.gatsbyImageData} alt={src} className={dName} />
+   )
+    };
     
-      if (!feimage) {
-        return null;
-      }
-    
-      return (
-             <GatsbyImage image={feimage.node.localFile.childImageSharp.gatsbyImageData} alt={src}  className={dName}/>
-   
-      )
-};
-
-HeroImageS3.propTypes = {
+HeroImage.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
 };
 
-export default HeroImageS3;
+export default HeroImage;
