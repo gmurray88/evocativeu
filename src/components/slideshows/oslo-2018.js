@@ -58,3 +58,4 @@ const Oslo2018SlideShow = () => {
     </div>
   )
 }
+export default Oslo2018SlideShow;
