@@ -6,21 +6,19 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import '../../styles/carousel.css';
 
 const FlorenceUffizi2018SlideShow = () => {
-  const { allS3Object } = useStaticQuery(
+  const { allFile } = useStaticQuery(
     graphql`
     query {
-      allS3Object(
-            filter: {Key: {glob: "florence-uffizi-2018/*"}}
-            sort: {fields: Key, order: ASC}
+        allFile(
+            filter: {relativeDirectory: {eq: "slideshows/florence-uffizi-2018"}}
+            sort: {fields: name, order: ASC}
             ) {
               edges {
                 node {
-                  Key
-                  localFile {
                   childImageSharp {
                     gatsbyImageData (
                       placeholder: BLURRED
-                   )
+                   ) 
                     fields {
                       exif {
                         raw {
@@ -30,27 +28,25 @@ const FlorenceUffizi2018SlideShow = () => {
                        }
                      }
                     }
-                  
-                    }
                   }
-                }
-              }
               }
             }
-          `,
+          }
+        }
+      `,
   )
   return (
-    <div >
+    <div>
       <Carousel
         showArrows={true}
         showThumbs={false}
       >
-
-        {allS3Object.edges.map(({ node }) => (
-          <div >
-            <GatsbyImage image={node.localFile.childImageSharp.gatsbyImageData} alt={node.Key} style={{ marginLeft: "auto", marginRight: "auto", maxHeight: "80vh", maxWidth: `calc(80vh * ((${node.localFile.childImageSharp.gatsbyImageData.width}) / (${node.localFile.childImageSharp.gatsbyImageData.height})))`  }}/>
-            <p>
-              {node.localFile.childImageSharp.fields.exif.raw.image.ImageDescription}
+        {allFile.edges.map(({ node }) => (
+    
+          <div>
+             <GatsbyImage image={node.childImageSharp.gatsbyImageData} alt=""   style={{ marginLeft: "auto", marginRight: "auto", maxHeight: "80vh", maxWidth: `calc(80vh * ((${node.childImageSharp.gatsbyImageData.width}) / (${node.childImageSharp.gatsbyImageData.height})))`  }}/>
+                 <p>
+              {node.childImageSharp.fields.exif.raw.image.ImageDescription}
             </p>
           </div>
         ))}
