@@ -56,4 +56,3 @@ const LagunaBeach2020SlideShow = () => {
   )
 }
 export default LagunaBeach2020SlideShow;
-
