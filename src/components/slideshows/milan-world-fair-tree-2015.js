@@ -1,10 +1,9 @@
 import * as React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql, useStaticQuery } from 'gatsby'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import '../../styles/carousel.css';
-
 
 const MilanWorldFairTree2015SlideShow = () => {
   const { allFile } = useStaticQuery(
@@ -16,10 +15,10 @@ const MilanWorldFairTree2015SlideShow = () => {
             ) {
               edges {
                 node {
-                  id
-                  name
                   childImageSharp {
-                    
+                    gatsbyImageData (
+                      placeholder: BLURRED
+                   ) 
                     fields {
                       exif {
                         raw {
@@ -29,15 +28,12 @@ const MilanWorldFairTree2015SlideShow = () => {
                        }
                      }
                     }
-                    fluid(maxWidth: 2048) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
                   }
-                }
               }
             }
-          `,
+          }
+        }
+      `,
   )
   return (
     <div>
@@ -46,10 +42,10 @@ const MilanWorldFairTree2015SlideShow = () => {
         showThumbs={false}
       >
         {allFile.edges.map(({ node }) => (
+    
           <div>
-            <Img style={{ marginLeft: "auto", marginRight: "auto", maxHeight: "80vh", maxWidth: `calc(80vh * ${node.childImageSharp.fluid.aspectRatio})` }}
-              fluid={node.childImageSharp.fluid} />
-            <p>
+             <GatsbyImage image={node.childImageSharp.gatsbyImageData} alt=""   style={{ marginLeft: "auto", marginRight: "auto", maxHeight: "80vh", maxWidth: `calc(80vh * ((${node.childImageSharp.gatsbyImageData.width}) / (${node.childImageSharp.gatsbyImageData.height})))`  }}/>
+                 <p>
               {node.childImageSharp.fields.exif.raw.image.ImageDescription}
             </p>
           </div>
