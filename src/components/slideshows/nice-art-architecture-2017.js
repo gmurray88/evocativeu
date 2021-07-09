@@ -54,3 +54,4 @@ const NiceArtArchitecture2017SlideShow = () => {
     </div>
   )
 }
+export default NiceArtArchitecture2017SlideShow;
