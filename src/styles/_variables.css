@@ -1,6 +1,23 @@
 :root {
+
+  /* spacing */
+  --spacing-px: "1px";
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+
   /* colors */
-  --hateful-green: #80b682;
   --plum: #DDA0DD;
   --dark-slate-grey: #2F4F4F;
 
@@ -34,6 +51,9 @@
   --sans-serif-font-family: 'Open sans', sans-serif;
   --post-serif-font-family: 'Noto Serif TC', Georgia, Cambria, 'Times New Roman',
     Times, serif;
+
+  /* links */
+    --link: #cc08c2;
 
   /* sizes */
   --site-width: 4096px;

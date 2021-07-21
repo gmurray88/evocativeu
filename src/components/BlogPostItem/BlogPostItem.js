@@ -1,17 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-
+import moment from 'moment';
 import { Col, Row } from 'react-bootstrap';
 
 import slugify from '../../utils/slugify';
 import { ImageBlogIdx } from '../Image';
-import { AuthorDisplay } from '../AuthorDisplay';
 
 import * as classes from './BlogPostItem.module.css';
 
 const BlogPostItem = ({ post, feature = false }) => {
-  const { author, date, coverImage, subtitle, title } = post.frontmatter;
+  const { date, coverImage, subtitle, title } = post.frontmatter;
+  const dateDisplay = date && (
+    <span className={classes.date}>
+      {moment(new Date(date)).format('MMM D, YYYY')}
+    </span>
+  );
+  
   return (
     <Col xs={12} sm={12} md={feature ? 12 : 6} lg={feature ? 12 : 4}>
       <Link to={`/blog/${slugify(title)}`} className={classes.container}>
@@ -29,7 +34,7 @@ const BlogPostItem = ({ post, feature = false }) => {
             <main>
               <h2 className={classes.title}>{title}</h2>
               <p className={classes.subtitle}>{subtitle}</p>
-              <AuthorDisplay name={author} date={date} />
+              <p> {dateDisplay}</p>
             </main>
           </Col>
         </Row>

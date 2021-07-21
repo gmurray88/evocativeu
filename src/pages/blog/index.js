@@ -40,7 +40,6 @@ export const query = graphql`
         frontmatter {
           coverImage
           date
-          author
           title
           subtitle
         }

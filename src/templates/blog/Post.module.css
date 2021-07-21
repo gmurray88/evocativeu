@@ -36,6 +36,12 @@
   margin-bottom: 0.75rem;
 }
 
+.date {
+  font-size: .9rem;
+  font-family: var(--sans-serif-font-family);
+  color: var(--black);
+}
+
 .metadata {
   margin-bottom: 3rem;
 }
@@ -44,7 +50,4 @@
   font-weight: 400;
 }
 
-.authorName {
-  font-family: var(--sans-serif-font-family);
-  font-size: 1rem;
-}
+

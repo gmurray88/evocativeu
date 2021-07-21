@@ -28,6 +28,7 @@ h6 {
 
 a {
   cursor: pointer;
+  color: var(--link);
 }
 
 em {
@@ -62,7 +63,7 @@ blockquote {
   margin-top: 3rem;
   margin-bottom: 3rem;
   padding-left: 1rem;
-  border-left: 5px solid var(--hateful-green);
+  border-left: 5px solid var(--dark-slate-grey);
 }
 
 .gatsby-resp-image-image {

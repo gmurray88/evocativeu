@@ -19,17 +19,17 @@ const Footer = () => (
               <Link to="/blog">Blog</Link>
             </li>
             <li>
-              <Link to="/community">Art Playlists</Link>
+              <Link to="/artplaylists">Art Playlists</Link>
             </li>
           </ul>
         </Col>
         <Col lg={3}>
-          <div className={classes.subtitle}>Find us online</div>
+          <div className={classes.subtitle}>Source Code</div>
           <ul className={classes.linkList}>
             <li>
               <GitHubIcon />{' '}
               <OutboundLink
-                href="https://github.com/"
+                href="https://github.com/gmurray88/evocativeu"
                 target="_blank"
                 rel="noreferrer noopener"
               >
@@ -56,18 +56,7 @@ const Footer = () => (
                 Gatsby
               </OutboundLink>
             </li>
-            <li>
-              <OutboundLink
-                href="https://www.netlify.com"
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <img
-                  alt="Deploys by netlify"
-                  src="https://www.netlify.com/img/global/badges/netlify-light.svg"
-                />
-              </OutboundLink>
-            </li>
+
 
           </ul>
         </Col>

@@ -17,9 +17,7 @@ const getMdxDataForType = async ({ type, graphql }) => {
       }
     }
   `);
-  console.log(
-    `🔥 Found ${data.allMdx.nodes.length} .mdx files with type: ${type}`
-  );
+
   return data.allMdx.nodes;
 };
 

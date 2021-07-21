@@ -32,9 +32,13 @@ const Image = ({ src }) => {
     edge => edge.node.original.src.includes(src)
   );
 
+  if (!feimage) {
+    return null;
+  }
+
   return (
     <div className={classes.container}>
-           <GatsbyImage image={feimage.node.gatsbyImageData} alt={src}  style={{ marginLeft: "auto", marginRight: "auto", maxHeight: "80vh", maxWidth: `calc(80vh * ((${feimage.node.gatsbyImageData.width}) / (${feimage.node.gatsbyImageData.height})))`  }}/>
+           <GatsbyImage image={feimage.node.gatsbyImageData} alt={src}  style={{ marginLeft: "auto", marginRight: "auto", display: "block", maxHeight: "80vh", maxWidth: `calc(80vh * ((${feimage.node.gatsbyImageData.width}) / (${feimage.node.gatsbyImageData.height})))`  }}/>
      </div>
   )
 };

@@ -29,7 +29,11 @@ export const HeroImage = ({ src, dName }) => {
       const feimage = allImageSharp.edges.find(
         edge => edge.node.original.src.includes(src)
       );
-        
+    
+      if (!feimage) {
+        return null;
+      }
+    
  
    return(
       <GatsbyImage image={feimage.node.gatsbyImageData} alt={src} className={dName} />

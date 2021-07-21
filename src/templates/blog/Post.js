@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import { Location } from '@reach/router';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { Container, Col, Row } from 'react-bootstrap';
 import { HeroImage } from '../../components/Image';
 import {
-  AuthorDisplay,
   Colophon,
   Layout,
   SEO,
@@ -16,8 +16,12 @@ import * as classes from './Post.module.css';
 const Post = ({ data, pageContext }) => {
   const { post, coverImageUrl } = data;
 
-  const { coverImage, title, subtitle, author, date } = post.frontmatter;
-
+  const { coverImage, title, subtitle, date } = post.frontmatter;
+  const dateDisplay = date && (
+    <span className={classes.date}>
+      {moment(new Date(date)).format('MMM D, YYYY')}
+    </span>
+  );
   return (
     <Location>
       {({ location }) => {
@@ -55,10 +59,7 @@ const Post = ({ data, pageContext }) => {
                     <h2 className={classes.postTitle}>
                       {post.frontmatter.title}
                     </h2>
-                    <AuthorDisplay
-                      name={author}
-                      date={date}
-                    />
+                    <p> {dateDisplay}</p>
                   </div>
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </Col>
@@ -89,7 +90,6 @@ export const query = graphql`
       frontmatter {
         title
         subtitle
-        author
         date
         coverImage
       }

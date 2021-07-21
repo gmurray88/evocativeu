@@ -10,6 +10,13 @@ module.exports = {
     description: ``,
     author: `Glenn Murray`,
     siteUrl: `https://evocativeu.com`,
+    author: {
+      name: `Glenn Murray.`,
+      summary: ` I design and build cool software. `,
+    },
+    social: {
+      linkedin: `https://www.linkedin.com/in/glenn-murray-61275228`,
+    },
   },
   plugins: [
     

@@ -16,6 +16,12 @@
   text-decoration: none;
 }
 
+.date {
+  font-size: .9rem;
+  font-family: var(--sans-serif-font-family);
+  color: var(--black);
+}
+
 .imageContainer {
   height: 15rem;
   margin-bottom: 1rem;
@@ -30,3 +36,5 @@
 .subtitle {
   color: rgba(var(--black_rgb), var(--alpha-dimmed));
 }
+
+

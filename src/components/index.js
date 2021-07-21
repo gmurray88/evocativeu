@@ -1,4 +1,4 @@
-export { AuthorDisplay } from './AuthorDisplay';
+export { Bio } from './Bio';
 export { BlogPostItem } from './BlogPostItem';
 export { Button } from './Button';
 export { Colophon } from './Colophon';
