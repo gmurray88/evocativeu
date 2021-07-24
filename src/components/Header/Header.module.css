@@ -13,6 +13,10 @@
   max-width: 90vw;
 }
 
+.logo {
+  color: rgb(118, 45, 202)
+}
+
 .navbar {
   margin-top: 3rem;
   max-width: 100vw;

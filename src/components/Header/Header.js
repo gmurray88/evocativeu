@@ -14,13 +14,9 @@ const Header = ({ siteTitle }) => (
       <Row>
         <Col>
           <header className={classes.header}>
-            <h1>
+            <h1 className={classes.logo}>
               <Link to="/">
-                <img
-                  className={`img-responsive ${classes.headerImage}`}
-                  src="/img/EvocativeULogo.png"
-                  alt="EvocativeU"
-                />
+                  Evocative U
               </Link>
           </h1>
             <p>
