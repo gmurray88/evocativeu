@@ -15,6 +15,9 @@ const Footer = () => (
         <Col lg={2}>
           <div className={classes.subtitle}>Contents</div>
           <ul className={classes.linkList}>
+          <li>
+              <Link to="/">Home</Link>
+            </li>
             <li>
               <Link to="/blog">Blog</Link>
             </li>

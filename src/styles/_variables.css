@@ -37,6 +37,8 @@
   --purple_hex: var(--purple);
   --purple_rgb: 137, 112, 155;
 
+  --dark-purple: #5c0799;
+
   --dark-green: #547d56;
   --dark-green_hex: var(--dark-green);
   --dark-green_rgb: 84, 125, 86;

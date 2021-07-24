@@ -17,7 +17,8 @@
 
 .logo {
   font-family: var(--sans-serif-font-family);
-  color: var(--purple);
+  font-weight: 200;
+  color: var(--dark-purple);
 }
 
 .navbar {

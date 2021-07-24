@@ -15,15 +15,16 @@ const Header = ({ siteTitle }) => (
         <Col>
           <header className={classes.header}>
             <h1 className={classes.logo}>
-              <Link to="/" className={classes.link} >
-                  Evocative U
-              </Link>
-          </h1>
+               Evocative U
+            </h1>
             <p>
                 (ee-vok'-uh-tiv) Bringing strong images, memories, or feelings to mind
             </p> 
       
              <nav className={classes.navbar}>
+             <Link to="/" className={classes.link}>
+                Home
+              </Link>
               <Link to="/blog" className={classes.link}>
                 Blog
               </Link>
