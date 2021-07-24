@@ -15,7 +15,7 @@ const Header = ({ siteTitle }) => (
         <Col>
           <header className={classes.header}>
             <h1 className={classes.logo}>
-              <Link className={classes.link} to="/">
+              <Link to="/" className={classes.link} >
                   Evocative U
               </Link>
           </h1>
