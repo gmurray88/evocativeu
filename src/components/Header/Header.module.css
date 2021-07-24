@@ -13,8 +13,10 @@
   max-width: 90vw;
 }
 
+
+
 .logo {
-  color: rgb(118, 45, 202)
+  font-family: var(--sans-serif-font-family);
 }
 
 .navbar {
