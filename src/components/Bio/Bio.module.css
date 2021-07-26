@@ -1,7 +1,13 @@
 
 .bio {
+  display: flex;
   margin-top: var(--spacing-2);
-  margin-bottom: var(--spacing-4);
+  margin-bottom: var(--spacing-1);
+}
+
+.bioavatar {
+  width: 70px;
+  height: 70px;
 }
 
 

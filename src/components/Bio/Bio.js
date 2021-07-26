@@ -25,9 +25,9 @@ const Bio = () => {
 
   return (
     <div className={classes.bio}>
-      <p>
+      <div className={classes.bioavatar}>
       <StaticImage
-        imgStyle={{ borderRadius: "50%" }}
+        imgStyle={{ borderRadius: "50%", Height: "70px", Width: "70px" }}
         layout="fixed"
         src="../../images/GlennMurray.jpg"
         quality={95}
@@ -35,18 +35,17 @@ const Bio = () => {
         height={70}
         alt="Glenn Murray"
       />
-      </p>
+   </div>
       {author?.name && (
         <p>
           Written by <strong>{author.name}</strong> {author?.summary || null}
           <a href={`${social?.linkedin || ``}`}>CV</a>
-          <p>
-          {`Here's my latest `}
+          <p>{` Here's my latest `}
           <Link to="/blog/life-during-lockdown">
             think piece.
           </Link>
           </p>
-        </p>
+            </p>
       )}
     </div>
   )
